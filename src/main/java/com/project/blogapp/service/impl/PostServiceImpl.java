@@ -91,21 +91,13 @@ public class PostServiceImpl implements PostSevice {
 
     // Map Entity to DTO
     private PostDTO mapToDTO(Post post) {
-        PostDTO postDTO = PostDTO.builder()
-                .id(post.getId())
-                .title(post.getTitle())
-                .description(post.getDescription())
-                .content(post.getContent())
-                .build();
+        PostDTO postDTO = modelMapper.map(post, PostDTO.class);
         return postDTO;
     }
 
     // Map DTO to Entity
     private Post mapToEntity(PostDTO postDTO) {
-        Post post = Post.builder().title(postDTO.getTitle())
-                .description(postDTO.getDescription())
-                .content(postDTO.getContent())
-                .build();
+        Post post = modelMapper.map(postDTO, Post.class);
         return post;
     }
 
